@@ -23,7 +23,11 @@ while True:
     clientSocket.send("Thank You for connecting")
 
     # while msg from client to use server
-    while (clientSocket.recv(1024)=="y"):
+    while True:
+
+        if clientSocket.recv(1024)!="y":
+            break
+            
         # received the dump list
         myList = clientSocket.recv(4096)
 
@@ -32,10 +36,11 @@ while True:
 
         # sort the list
         data.sort()
+        data.reverse()
 
         # dump and send it
         clientSocket.send(pickle.dumps(data))
 
-    # close the connection 
+    # close the connection
     print "Connection closed from", str(addr)
     clientSocket.close()
