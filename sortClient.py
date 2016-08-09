@@ -15,14 +15,14 @@ print clientSocket.recv(1024)
 
 while True:
     # Ask user input whether to continue or exit
-    msg = raw_input("\nEnter Yes to continue or No to exit : ")
+    msg = raw_input("\nEnter y to continue or n to exit : ")
 
     # send user response to server if response is no then client
     # get disconnected from server
     clientSocket.send(msg)
 
     # If yes continue fetching data from server
-    if (msg == "Yes" or msg == "y" or msg=="yes"):
+    if (msg == "y"):
 
         # Ask user to enter list elements
         data = raw_input("Enter the list to sort: ")
